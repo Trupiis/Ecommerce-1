@@ -16,7 +16,8 @@ import {
   useColorMode,
   Center,
 } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons'
+import { MoonIcon, SunIcon } from '@chakra-ui/icons';
+import CartWidget from '../CartWidget/CartWidget';
 
 
 
@@ -25,7 +26,7 @@ const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
-      <Box boxShadow='dark-lg' fontFamily={'sora'} bg={useColorModeValue('', '#b30000')} px={10}>
+      <Box boxShadow='dark-lg' fontFamily={'sora'} bg={useColorModeValue('', '#b30000')} px={10} zIndex={1} position={'relative'}>
         <Flex h={120} alignItems={'center'} justifyContent={'space-between'}>
           <Box fontSize={35} fontWeight={800}>Del Bajón</Box>
 
@@ -35,6 +36,8 @@ const NavBar = () => {
                 <Link fontSize={20}>Sobre Nosotros</Link>
                 <Link fontSize={20}>Catálogo</Link>
                 <Link fontSize={20}>Hacé tu pedido</Link>
+
+                <CartWidget/>
             </Stack>
           </Flex>
         </Flex>
