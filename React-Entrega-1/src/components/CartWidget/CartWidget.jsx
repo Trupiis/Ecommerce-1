@@ -1,7 +1,5 @@
 import { PiShoppingCartLight } from "react-icons/pi";
 
-
-
 import { Box, Center, ChakraProvider } from '@chakra-ui/react';
 
 const CartWidget = () => {

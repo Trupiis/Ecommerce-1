@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react'
 import { MoonIcon, SunIcon } from '@chakra-ui/icons';
 import CartWidget from '../CartWidget/CartWidget';
-
+import styles from "./NavBar.module.css"
 
 
 const NavBar = () => {
@@ -26,16 +26,16 @@ const NavBar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure()
   return (
     <>
-      <Box boxShadow='dark-lg' fontFamily={'sora'} bg={useColorModeValue('', '#b30000')} px={10} zIndex={1} position={'relative'}>
-        <Flex h={120} alignItems={'center'} justifyContent={'space-between'}>
-          <Box fontSize={35} fontWeight={800}>Del Bajón</Box>
+      <Box className={styles.NavBar}>
+        <Flex h={75} alignItems={'center'} justifyContent={'space-between'}>
+          <Box className={styles.logo} fontSize={35} fontWeight={800} textShadow={'5px 5px 20px #000'}>Del Bajón</Box>
 
           <Flex alignItems={'center'}>
             <Stack direction={'row'} spacing={7} alignItems={'center'}>
-                <Link fontSize={20}>Inicio</Link>
-                <Link fontSize={20}>Sobre Nosotros</Link>
-                <Link fontSize={20}>Catálogo</Link>
-                <Link fontSize={20}>Hacé tu pedido</Link>
+                <Link className={styles.navlink} fontSize={20}>Inicio</Link>
+                <Link className={styles.navlink} fontSize={20}>Sobre Nosotros</Link>
+                <Link className={styles.navlink} fontSize={20}>Catálogo</Link>
+                <Link className={styles.navlink} fontSize={20}>Hacé tu pedido</Link>
 
                 <CartWidget/>
             </Stack>
