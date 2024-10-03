@@ -1,10 +1,15 @@
+
+import { CartWidget } from "../index"
+import styles from "../../../styles/NavBar.module.css"
+
 import {
   Box,
   Flex,
   Avatar,
+  HStack,
   Text,
+  IconButton,
   Button,
-  Link,
   Menu,
   MenuButton,
   MenuList,
@@ -13,37 +18,64 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
-  useColorMode,
-  Center,
 } from '@chakra-ui/react'
-import { MoonIcon, SunIcon } from '@chakra-ui/icons';
-import CartWidget from '../CartWidget/CartWidget';
-import styles from "./NavBar.module.css"
+import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 
 
-const NavBar = () => {
-  const { colorMode, toggleColorMode } = useColorMode()
+const Links = ['Inicio', 'Sobre Nosotros', 'Catálogo', 'Hacé tu pedido']
+
+export const NavLink = ({ children, ...rest }) => {
+    return (
+      <Box
+        as="a"
+        px={2}
+        py={1}
+        rounded={'md'}
+        {...rest} // Esparcir las props para permitir otras como "key"
+      >
+        {children}
+      </Box>
+    )
+  }
+
+export const NavBar = ()=> {
   const { isOpen, onOpen, onClose } = useDisclosure()
+
   return (
     <>
-      <Box className={styles.NavBar}>
-        <Flex h={75} alignItems={'center'} justifyContent={'space-between'}>
-          <Box className={styles.logo} fontSize={35} fontWeight={800} textShadow={'5px 5px 20px #000'}>Del Bajón</Box>
+      <Box className={styles.NavBar} >
+        <Flex h={20} alignItems={'center'}>
+          <Flex w="full" alignItems="center" justifyContent="space-between">
+            <Box className={styles.logo} fontSize={35} fontWeight={800} textShadow={'5px 5px 20px #000'}>DEL BAJÓN</Box>
 
+            <IconButton
+            size={'md'} 
+            marginRight={5}
+            icon={isOpen ? <CloseIcon /> : <HamburgerIcon />}
+            aria-label={'Open Menu'}
+            display={{ md: 'none' }}
+            onClick={isOpen ? onClose : onOpen}
+          />
+            <HStack marginRight={5} as={'nav'} spacing={5} display={{ base: 'none', md: 'flex' }}>
+              {Links.map((link) => (
+                <NavLink className={styles.navlink} fontSize={20} key={link}>{link}</NavLink>
+              ))}
+          </HStack>
+          </Flex>
           <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={7} alignItems={'center'}>
-                <Link className={styles.navlink} fontSize={20}>Inicio</Link>
-                <Link className={styles.navlink} fontSize={20}>Sobre Nosotros</Link>
-                <Link className={styles.navlink} fontSize={20}>Catálogo</Link>
-                <Link className={styles.navlink} fontSize={20}>Hacé tu pedido</Link>
-
-                <CartWidget/>
-            </Stack>
           </Flex>
         </Flex>
+
+        {isOpen ? (
+          <Box pb={4} display={{ md: 'none' }}>
+            <Stack as={'nav'} spacing={4}>
+              {Links.map((link) => (
+                <NavLink key={link}>{link}</NavLink>
+              ))}
+            </Stack>
+          </Box>
+        ) : null}
       </Box>
     </>
   )
 }
-
-export default NavBar

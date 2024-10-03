@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+.NavBar{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 20px black;
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    font-family: "sora", serif;
+}
+
+.navlink{
+    text-transform: uppercase;
+    font-family: "sora", sans-serif;
+    font-weight: 900;
+    color: #000 !important;
+    background-color: #e8e8e8;
+    height: 35px;
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: .5s;
+    
+}
+
+.navlink:hover{
+    transform: scale(1.1);
+    text-decoration: none !important;
+}
+
+.logo{
+    text-transform: uppercase;
+    transition: .5s ease;
+    padding: 20px;
+    color:  #fff;
+}
+
+.logo:hover{
+    transform: scale(1.10);
+    
+}

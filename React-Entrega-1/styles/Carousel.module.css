@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+.titulo{
+    color: BLACK;
+    font-size: 60px;
+    text-align: center;
+    top: 0;
+    font-family: "Sora", sans-serif;
+    font-weight: 800;
+}
+
+.Carrusel{
+    background-color: #1d1d1d;
+    height: 400px;
+    border-radius: 50px;
+    align-content: center;
+    margin-top: 20px;
+    margin-right: 100px;
+    margin-left: 100px;
+
+}
+.Swiper {
+    width: 70%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.swiperSlide {
+    background-position: center;
+    background-size: cover;
+    width: 300px !important;
+    height: 300px;
+}
+
+.swiperSlide img {
+    display: block;
+    width: 300px ;
+}
