@@ -1,59 +1,81 @@
-import { Box, Image, Text, Center, ChakraProvider } from '@chakra-ui/react';
-import styles from '../../styles/Carousel.module.css'
-
-/* export const Carousel = ({children}) =>{
-    return (
-        <Box bgColor={'#f0f0f0'} minHeight={'100vh'}>
-            <Text className={styles.titulo}>DELEITATE</Text>
-            {children}
-        </Box>
-    )
-}
- */
-import React, { useRef, useState } from 'react';
-// Import Swiper React components
+import React, {useEffect } from 'react';
+import { Box } from '@chakra-ui/react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-
-// import required modules
 import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { CardProduct } from '../components/index';
+import styles from '../../styles/Carousel.module.css';
+import images from '../assets/OREO.png';
+
+const productsData = [
+  {
+    id: 1,
+    nombre: 'Postre Oreo',
+    descripcion: "La vieja confiable, totalmente infaltable a la hora del bajón. Si sos goloso capaz lo terminas, sino lo podes compartir con quien más quieras!",
+    precio: 5600,
+    imagen: images
+  },
+  {
+    id: 2,
+    nombre: 'Postre Chocotorta',
+    descripcion: "En nuestra opinión, la mejor opción para los no tan fanáticos del dulce. La combinación del queso crema y el dulce de leche es ideal para comer algo dulce sin empalagarte!",
+    precio: 4000,
+    imagen: images
+  },
+  {
+    id: 3,
+    nombre: 'Postre CheeseCake',
+    descripcion: "La combinación del cheesecake con el ácido de nuestra mermelada casera de frutos rojos es un mil. ¿Te animas a probarlo?",
+    precio: 5600,
+    imagen: images
+  },
+  {
+    id: 4,
+    nombre: 'Postre Brownie',
+    descripcion: "Hecho con nuestro brownie secreto, crema y muuuuuucho dulce de leche. Ideal para los más golosos.",
+    precio: 4500,
+    imagen: images
+  }
+];
+
 
 export const Carousel = () => {
+  useEffect(() => {
+    // Obtener las clases de sombra al montar el componente
+    const shadowUno = document.getElementsByClassName('swiper-slide-shadow-left');
+    const shadowDos = document.getElementsByClassName('swiper-slide-shadow-coverflow');
+
+    if (shadowUno.length > 0) {
+      shadowUno[0].classList.remove('swiper-slide-shadow-left');
+    }
+    if (shadowDos.length > 0) {
+      shadowDos[0].classList.remove('swiper-slide-shadow-coverflow');
+    }
+
+    console.log('ShadowUno');
+    console.log('ShadowDos');
+  }, []); // Se ejecuta solo una vez al montar el componente
+
   return (
     <Box className={styles.Carrusel}>
-      <Swiper 
+      <Swiper
         effect={'coverflow'}
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
+        spaceBetween={5}
         pagination={true}
         modules={[EffectCoverflow, Pagination]}
         className={styles.Swiper}
       >
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg"/>
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg"/>
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg"/>
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide}>
-          <img src="https://swiperjs.com/demos/images/nature-4.jpg"/>
-        </SwiperSlide>
+        {productsData.map((product) => (
+          <SwiperSlide key={product.id} className={styles.swiperSlide}>
+            <CardProduct products={[product]} />
+          </SwiperSlide>
+        ))}
       </Swiper>
     </Box>
   );
-}
+};

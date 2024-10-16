@@ -1,38 +1,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
+
 .titulo{
     color: BLACK;
-    font-size: 60px;
+    font-size: 120px;
     text-align: center;
     top: 0;
-    font-family: "Sora", sans-serif;
+    font-family: 'Highrise';
     font-weight: 800;
 }
 
 .Carrusel{
     background-color: #1d1d1d;
-    height: 400px;
+    height: 450px;
     border-radius: 50px;
     align-content: center;
-    margin-top: 20px;
     margin-right: 100px;
     margin-left: 100px;
+    margin-bottom: 50px;
 
 }
 .Swiper {
     width: 70%;
-    padding-top: 50px;
-    padding-bottom: 50px;
 }
 
 .swiperSlide {
     background-position: center;
     background-size: cover;
-    width: 300px !important;
-    height: 300px;
+    width: 300px !important; 
 }
 
 .swiperSlide img {
     display: block;
-    width: 300px ;
+    width: 300px !important ;
+}
+
+.contador{
+    display: flex;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    height: 30px;
+    justify-content: space-between !important;
+    text-align: center;
+    box-shadow: 0 0 5px black;
+}
+
+.nombre{
+    font-family: 'sora';
+    font-weight: 800;
+    font-size: 20px;
+    text-transform: uppercase;
+}
+.precio{
+    font-family: 'sora';
+    font-weight: 800;
+    font-size: 15px;
+    margin-bottom: 10px;
+
+}
+
+.resta{
+    display: flex !important;
+    height: 30px !important; 
+    text-align: center !important;
+    justify-content: center !important;
+    border-radius: 4px 0 0 4px !important;
+    background-color: #000 !important;
+}
+.suma{
+    display: flex !important;
+    height: 30px !important; 
+    text-align: end !important;
+    border-radius: 0 4px 4px 0px !important;
+    background-color: #000 !important;
 }
