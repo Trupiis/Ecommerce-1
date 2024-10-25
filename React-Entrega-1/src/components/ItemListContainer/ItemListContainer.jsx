@@ -48,7 +48,7 @@ import styles from '../../../styles/Carousel.module.css'
 ] */
 
 export const ItemListContainer = ({children}) =>{
-return <Box bgColor={'#f0f0f0'} color={'#000'} textAlign={'Center'} height={'100%'} alignContent={'center'}>
+return <Box bgColor={'#f0f0f0'} color={'#000'} textAlign={'Center'} height={'100vh'} alignContent={'center'}>
   <Text className={styles.titulo}>DELEITATE</Text>
   {children}</Box>
 }

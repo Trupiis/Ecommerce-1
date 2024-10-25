@@ -22,7 +22,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 
 
-const Links = ['Inicio', 'Sobre Nosotros', 'Catálogo', 'Hacé tu pedido']
+const Links = ['Inicio', 'Catálogo', 'Sobre Nosotros', 'Hacé tu pedido']
 
 export const NavLink = ({ children, ...rest }) => {
     return (

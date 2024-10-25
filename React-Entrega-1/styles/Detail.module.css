@@ -1,0 +1,9 @@
+.contador{
+    background-color: #1c1c1c;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border-radius: 0 0 10px 10px
+}

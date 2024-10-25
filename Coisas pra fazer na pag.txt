@@ -1,0 +1,19 @@
+PÁGINA A HACER (7 DÍAS)
+
+-NAVBAR:
+	-Categorias clickeables (1920px) "Inicio, Sobre Nosotros, Catalogo" HECHO
+	-Menú Hamburguesa "HECHO"
+	-#Logo ==> Inicio
+
+-INICIO:
+	-Banner "Diseño de vasos chocando (FONDO CON OPACIDAD O AL LADO) y logo"
+	-Slogan en la parte baja del banner "Cuanto el bajón aparece nosotros respondemos"
+
+-SOBRE NOSOTROS:
+
+-CATÁLOGO:
+	-Carrusel de tipos de postres (Efecto PPT)
+	-Boton llamada a la accion "Hacé tu pedido"
+
+Instalar Axios
+Crear en SCR ==> "services" ==> products.service.js

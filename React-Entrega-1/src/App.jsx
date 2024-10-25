@@ -1,7 +1,6 @@
 import React from 'react';
-
 import { ChakraProvider } from '@chakra-ui/react';
-import { NavBar, ItemListContainer, CardProduct, CartWidget } from './components/index';
+import { NavBar, ItemListContainer, ItemDetailContainer, CardProduct, CartWidget, ItemCounter } from './components/index';
 import { Carousel, Inicio, SobreNosotros } from './pages';
 import '../styles/GlobalStyles.css'
 import 'animate.css';
@@ -12,12 +11,15 @@ function App() {
       <NavBar></NavBar>
       <Inicio></Inicio>
       <ItemListContainer>
-        <Carousel></Carousel>
+        <Carousel/>
       </ItemListContainer>
       <SobreNosotros></SobreNosotros>
+      <ItemDetailContainer>
+
+        <ItemCounter></ItemCounter>
+      </ItemDetailContainer>
 
     </ChakraProvider>
-
   )
 }
 

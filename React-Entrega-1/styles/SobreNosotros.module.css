@@ -1,12 +1,12 @@
 .SobreNosotros{
     margin: 0;
-    height: 100%;
+    height: 100vh;
     background: linear-gradient(to bottom, #000, #3F0304);
     font-family: "Sora", sans-serif;
 }
 
 .titulo{
-    color: #fff;
+    color: #f0f0f0;
     font-size: 120px;
     text-align: center;
     top: 0;
@@ -23,8 +23,10 @@
     padding-left: 20vh;
     padding-right: 10vh;
     font-size: 20px;
+    font-weight: bold;
     width: 600px;
     align-content: center;
+    color: #f0f0f0;
 }
 
 .lemaDos{ 
@@ -33,6 +35,7 @@
     font-size: 20px;
     width: 600px;
     align-content: center;
+    color: #f0f0f0;
 }
 
 
@@ -45,6 +48,6 @@
     border: none;
     display: block; /* Elimina espacio extra en línea */
     width: 250px;
-    height: 400px;
+    height: 450px;
     filter: drop-shadow(0 0 20px black);
 }
