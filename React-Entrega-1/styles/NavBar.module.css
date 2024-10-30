@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
 
 .NavBar{
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 100%;
     padding: 20px;
@@ -10,6 +10,17 @@
     backdrop-filter: blur(10px);
     z-index: 1000;
     font-family: "sora", serif;
+    transition: transform 0.3s ease-in-out;
+}
+
+.NavBar .visible{
+    transition: opacity 0.3s ease-in;
+    opacity: 1;
+}
+.NavBar.escondido{
+    transform: translateY(-100%);
+    opacity: 0;
+    height: 0;
 }
 
 .navlink{

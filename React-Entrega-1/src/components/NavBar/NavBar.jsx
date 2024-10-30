@@ -20,6 +20,9 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
+import { useEffect, useState } from "react"
+import { style } from "framer-motion/client"
+import { Link } from "react-router-dom"
 
 
 const Links = ['Inicio', 'Catálogo', 'Sobre Nosotros', 'Hacé tu pedido']
@@ -31,7 +34,7 @@ export const NavLink = ({ children, ...rest }) => {
         px={2}
         py={1}
         rounded={'md'}
-        {...rest} // Esparcir las props para permitir otras como "key"
+        {...rest}
       >
         {children}
       </Box>
@@ -40,10 +43,38 @@ export const NavLink = ({ children, ...rest }) => {
 
 export const NavBar = ()=> {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const [verNav, setVerNav] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const controlNavbar = () => {
+
+    const currentScrollY = window.scrollY;
+    if(currentScrollY === 0){
+      setVerNav(true)
+    }else if (currentScrollY > lastScrollY){
+      setVerNav(true);
+    }else if (currentScrollY <lastScrollY){
+      setVerNav(false)
+    }
+    
+    setLastScrollY(currentScrollY);
+    console.log(currentScrollY)
+  
+    }
+
+  useEffect(()=>{
+
+    window.addEventListener('scroll', controlNavbar);
+
+    return ()=>{
+      window.removeEventListener('scroll', controlNavbar);
+    }
+  }, [lastScrollY]);
+
+  
 
   return (
-    <>
-      <Box className={styles.NavBar} >
+      <Box className={`${styles.NavBar} ${verNav ? styles.visible : styles.escondido}`}>
         <Flex h={20} alignItems={'center'}>
           <Flex w="full" alignItems="center" justifyContent="space-between">
             <Box className={styles.logo} fontSize={35} fontWeight={800} textShadow={'5px 5px 20px #000'}>DEL BAJÓN</Box>
@@ -76,6 +107,4 @@ export const NavBar = ()=> {
           </Box>
         ) : null}
       </Box>
-    </>
-  )
-}
+  )}

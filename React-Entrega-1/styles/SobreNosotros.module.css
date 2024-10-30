@@ -1,6 +1,6 @@
 .SobreNosotros{
     margin: 0;
-    height: 100vh;
+    height: 100%;
     background: linear-gradient(to bottom, #000, #3F0304);
     font-family: "Sora", sans-serif;
 }
@@ -46,7 +46,7 @@
 
 .vaso{
     border: none;
-    display: block; /* Elimina espacio extra en línea */
+    display: block; 
     width: 250px;
     height: 450px;
     filter: drop-shadow(0 0 20px black);

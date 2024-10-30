@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
+.footer{
+    font-family: "Sora", sans-serif;
+    background-color: #1c1c1c;
+    height: 30vh;
+    box-shadow: 10px 0 20px black;
+    display: grid;
+    place-items: center;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.seguinos{
+    color: #f0f0f0;
+    text-align: center;    
+}
+.seguinos .titulo{
+    font-size: 30px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.logo{
+    width: 200px;
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+.red{
+    margin-left: 10px;
+    font-size: 18px;
+}

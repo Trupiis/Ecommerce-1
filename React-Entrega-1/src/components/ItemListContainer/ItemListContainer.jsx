@@ -11,9 +11,52 @@ import {
   useColorModeValue,
   ChakraProvider
 } from '@chakra-ui/react'
-import { style } from 'framer-motion/client'
-
 import styles from '../../../styles/Carousel.module.css'
+import { Link } from 'react-router-dom'
+
+
+
+export const ItemListContainer = ({children}) =>{
+return <Box bgColor={'#f0f0f0'} color={'#000'} textAlign={'Center'} height={'100vh'} alignContent={'center'}>
+  <Text className={styles.titulo}>DELEITATE</Text>
+  {children}</Box>
+}
+
+
+
+export const CardProduct = () => {
+  return (
+        <Center py={50}>
+          <Box
+            maxW={'250px'}
+            w={'full'}
+            bgColor={'#04020c'}
+            boxShadow={'2xl'}
+            rounded={'md'}
+            overflow={'hidden'}
+          >
+            <Image
+              h={'220px'}
+              w={'full'}
+              //src={}
+              objectFit="cover"
+              //alt={}
+            />
+
+            <Box p={5} bgColor={'red'}>
+              
+            </Box>
+          </Box>
+        </Center>
+      )
+};
+
+
+
+
+
+
+
 
 
 /* const productsData = [
@@ -46,48 +89,3 @@ import styles from '../../../styles/Carousel.module.css'
     imagen: '../../assets/oreo.jpg'
   }
 ] */
-
-export const ItemListContainer = ({children}) =>{
-return <Box bgColor={'#f0f0f0'} color={'#000'} textAlign={'Center'} height={'100vh'} alignContent={'center'}>
-  <Text className={styles.titulo}>DELEITATE</Text>
-  {children}</Box>
-}
-
-
-
-export const CardProduct = ({ products }) => {
-  return (
-    <>
-      {products.map((product) => (
-        <Center py={50} key={product.id}>
-          <Box
-            maxW={'250px'}
-            w={'full'}
-            bgColor={'#04020c'}
-            boxShadow={'2xl'}
-            rounded={'md'}
-            overflow={'hidden'}
-          >
-            <Image
-              h={'220px'}
-              w={'full'}
-              src={product.imagen}
-              objectFit="cover"
-              alt={product.nombre}
-            />
-
-            <Box p={2} bgColor={'#292929'}>
-              <Text className={styles.nombre} color={'white'}>{product.nombre}</Text>
-              <Text className={styles.precio} color={'white'}>Precio: ${product.precio}</Text>
-
-              <Box className={styles.contador}>
-                <Button className={styles.resta}>-</Button>
-                <Button className={styles.suma}>+</Button>
-              </Box>
-            </Box>
-          </Box>
-        </Center>
-      ))}
-    </>
-  );
-};
