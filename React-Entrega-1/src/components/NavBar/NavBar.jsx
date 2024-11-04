@@ -22,7 +22,7 @@ import {
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons'
 import { useEffect, useState } from "react"
 import { style } from "framer-motion/client"
-import { Link } from "react-router-dom"
+import { Link } from "react-scroll"
 
 
 const Links = ['Inicio', 'Catálogo', 'Sobre Nosotros', 'Hacé tu pedido']
@@ -49,12 +49,13 @@ export const NavBar = ()=> {
   const controlNavbar = () => {
 
     const currentScrollY = window.scrollY;
+
     if(currentScrollY === 0){
       setVerNav(true)
     }else if (currentScrollY > lastScrollY){
-      setVerNav(true);
+      setVerNav(false);
     }else if (currentScrollY <lastScrollY){
-      setVerNav(false)
+      setVerNav(true)
     }
     
     setLastScrollY(currentScrollY);
@@ -71,13 +72,21 @@ export const NavBar = ()=> {
     }
   }, [lastScrollY]);
 
+  const handleMouseLeave = () =>{
+    if (currentScrolly === 0 ){
+      setVerNav (false);
+    }
+  };
   
 
   return (
-      <Box className={`${styles.NavBar} ${verNav ? styles.visible : styles.escondido}`}>
+      <Box className={`${styles.NavBar} ${verNav ? styles.visible : styles.escondido}`}
+        onMouseEnter={() => setVerNav (true)}
+        onMouseLeave={handleMouseLeave}
+      >
         <Flex h={20} alignItems={'center'}>
           <Flex w="full" alignItems="center" justifyContent="space-between">
-            <Box className={styles.logo} fontSize={35} fontWeight={800} textShadow={'5px 5px 20px #000'}>DEL BAJÓN</Box>
+            <Box className={styles.logo} fontSize={35} fontWeight={800} textShadow={'5px 5px 10px #000'}>DEL BAJÓN</Box>
 
             <IconButton
             size={'md'} 
@@ -87,11 +96,12 @@ export const NavBar = ()=> {
             display={{ md: 'none' }}
             onClick={isOpen ? onClose : onOpen}
           />
-            <HStack marginRight={5} as={'nav'} spacing={5} display={{ base: 'none', md: 'flex' }}>
-              {Links.map((link) => (
-                <NavLink className={styles.navlink} fontSize={20} key={link}>{link}</NavLink>
-              ))}
-          </HStack>
+            <HStack as={'nav'} spacing={5} display={{ base: 'none', md: 'flex' }}>
+          <Link className={styles.navlink} to="inicio" smooth={true} duration={500}>Inicio</Link>
+          <Link className={styles.navlink} to="carousel" smooth={true} duration={500}>Catálogo</Link>
+          <Link className={styles.navlink} to="sobreNosotros" smooth={true} duration={500}>Sobre Nosotros</Link>
+          <CartWidget/>
+        </HStack>
           </Flex>
           <Flex alignItems={'center'}>
           </Flex>
@@ -100,11 +110,13 @@ export const NavBar = ()=> {
         {isOpen ? (
           <Box pb={4} display={{ md: 'none' }}>
             <Stack as={'nav'} spacing={4}>
-              {Links.map((link) => (
-                <NavLink key={link}>{link}</NavLink>
-              ))}
+            <Link className={styles.navlinkMenu} to="inicio" smooth={true} duration={500}>Inicio</Link>
+            <Link className={styles.navlinkMenu} to="carousel" smooth={true} duration={500}>Catálogo</Link>
+            <Link className={styles.navlinkMenu} to="sobreNosotros" smooth={true} duration={500}>Sobre Nosotros</Link>
             </Stack>
           </Box>
         ) : null}
       </Box>
   )}
+      //CARRITO
+    

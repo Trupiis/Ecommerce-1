@@ -8,6 +8,7 @@
     background-color: rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 20px black;
     backdrop-filter: blur(10px);
+    border-radius: 0 0 20px 20px;
     z-index: 1000;
     font-family: "sora", serif;
     transition: transform 0.3s ease-in-out;
@@ -18,9 +19,8 @@
     opacity: 1;
 }
 .NavBar.escondido{
-    transform: translateY(-100%);
-    opacity: 0;
-    height: 0;
+    transform: translateY(-70%);
+    opacity: 1;
 }
 
 .navlink{
@@ -36,7 +36,6 @@
     padding-right: 10px;
     border-radius: 10px;
     transition: .5s;
-    
 }
 
 .navlink:hover{
@@ -54,4 +53,18 @@
 .logo:hover{
     transform: scale(1.10);
     
+}
+
+.navlinkMenu{
+    text-transform: uppercase;
+    font-family: "sora", sans-serif;
+    font-weight: 900;
+    color: #f0f0f0 !important;
+    height: 35px;
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+    transition: .5s;
 }

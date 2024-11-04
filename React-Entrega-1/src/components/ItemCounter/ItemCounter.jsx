@@ -1,18 +1,27 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import { Flex, Button, Text } from "@chakra-ui/react";
 
 import styles from '../../../styles/Detail.module.css';
 
-export const ItemCounter = ()=>{
-    
-    const [state, setState] = useState(0);
+import { CartContext } from "../context";
 
-    const Añadir = () =>{
-        setState(state + 1);
+export const ItemCounter = ({item})=>{
+    
+    const [count, setCount] = useState(0);
+
+    const {cartState, addItem, removeItem} = useContext(CartContext);
+
+    const handleAddItem = () =>{
+        const newCount = count + 1;
+        setCount(newCount);
+        addItem(item, newCount);
+
     };
     
-    const Descartar = () => {
-        setState(state -1);
+    const handleRemoveItem = () =>{
+        const newCount = count - 1;
+        setCount(newCount);
+        removeItem(item, newCount);
     };
 
     useEffect(() => {
@@ -22,9 +31,9 @@ export const ItemCounter = ()=>{
 
     return (
         <Flex className={styles.contador}>
-        <Button onClick={Descartar}>-</Button>
-        <Text>{state}</Text>
-        <Button onClick={Añadir}>+</Button>
+        <Button onClick={handleRemoveItem}>-</Button>
+        <Text>{count}</Text>
+        <Button onClick={handleAddItem}>+</Button>
         </Flex>
     );
     };  

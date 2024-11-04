@@ -27,9 +27,20 @@ import { ArrowLeft , ArrowRight} from 'phosphor-react';
 export const Carousel = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState(null);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const openModalWithImage = (image) => {
-    setSelectedImage(image);
+const products = [
+  { id:'1', name: "Oreo", image: P01 },
+  { id:'2', name: "Rasta", image: P02 },
+  { id:'3', name: "Cheesecake", image: P02 },
+  { id:'4', name: "Brownie", image: P02 },
+  { id:'5', name: "Chocotorta", image: P02 }, 
+  { id:'6', name: "Banana Split", image: P02 }
+]
+
+  const openModalWithImage = (product) => {
+    setSelectedImage(product.image);
+    setSelectedProduct(product);
     onOpen();
   };
 
@@ -56,24 +67,16 @@ export const Carousel = () => {
         modules={[EffectCoverflow, Navigation]}
         className={styles.sliderContainer}
       >
-        <SwiperSlide className={styles.swiperSlide} onClick={() => openModalWithImage(P01)}>
-          <img src={P01} alt="Oreo" />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide} onClick={() => openModalWithImage(P02)}>
-          <img src={P02} alt="Rasta" />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide} onClick={() => openModalWithImage(P01)}>
-          <img src={P01} alt="Oreo" />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide} onClick={() => openModalWithImage(P01)}>
-          <img src={P01} alt="Oreo" />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide} onClick={() => openModalWithImage(P01)}>
-          <img src={P01} alt="Oreo" />
-        </SwiperSlide>
-        <SwiperSlide className={styles.swiperSlide} onClick={() => openModalWithImage(P01)}>
-          <img src={P01} alt="Oreo" />
-        </SwiperSlide>
+        {products.map((product) =>(
+          <SwiperSlide
+          key={product.id}
+          className={styles.swiperSlide}
+          onClick={() => openModalWithImage(product)}
+          >
+            <img src={product.image} alt={product.name} />
+          </SwiperSlide>
+        ))}
+      
       </Swiper>
 
       <Modal isOpen={isOpen} onClose={onClose}>
@@ -82,7 +85,7 @@ export const Carousel = () => {
           <ModalCloseButton />
           <ModalBody>
             <Image src={selectedImage} alt="Imagen del postre" />
-            <ItemCounter></ItemCounter>
+            <ItemCounter item={selectedProduct}></ItemCounter>
           </ModalBody>
         </ModalContent>
       </Modal>
