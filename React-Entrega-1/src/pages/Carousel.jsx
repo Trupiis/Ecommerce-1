@@ -20,23 +20,44 @@ import {
   useDisclosure
 } from "@chakra-ui/react";
 
-import P01 from "../assets/CARD-OREO.jpg";
-import P02 from "../assets/CARD-RASTA.jpg";
+/* import P01 from "../assets/CARD-OREO.jpg";
+import P02 from "../assets/CARD-RASTA.jpg"; */
 import { ArrowLeft , ArrowRight} from 'phosphor-react';
+import { db } from "../components/firebase/config";
+import { collection, getDocs } from "firebase/firestore";
 
 export const Carousel = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedImage, setSelectedImage] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [products, setProducts] = useState([]);
 
-const products = [
+/* const products = [
   { id:'1', name: "Oreo", image: P01 },
   { id:'2', name: "Rasta", image: P02 },
   { id:'3', name: "Cheesecake", image: P02 },
   { id:'4', name: "Brownie", image: P02 },
   { id:'5', name: "Chocotorta", image: P02 }, 
   { id:'6', name: "Banana Split", image: P02 }
-]
+] */
+
+  useEffect(()=>{
+    const fetchProducts = async ()=>{
+      try{
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const productList = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setProducts(productList);
+        console.log("Productos obtenidos:", productList);
+
+      }catch (error){
+        console.error ("Error al obtener el producto: ", error);
+      }
+    };
+  fetchProducts();
+},[]);
 
   const openModalWithImage = (product) => {
     setSelectedImage(product.image);
@@ -66,7 +87,7 @@ const products = [
         }}
         modules={[EffectCoverflow, Navigation]}
         className={styles.sliderContainer}
-      >
+      > 
         {products.map((product) =>(
           <SwiperSlide
           key={product.id}
