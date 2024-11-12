@@ -4,6 +4,8 @@ import { NavBar, ItemListContainer, ItemDetailContainer, CartWidget, ItemCounter
 import { Carousel, Inicio, SobreNosotros } from './pages';
 import { MainRouter } from './router/MainRouter';
 import { CartProvider } from './components/index';
+import { Formulario } from './pages/Formulario';
+
 import '../styles/GlobalStyles.css'
 import 'animate.css';
 
