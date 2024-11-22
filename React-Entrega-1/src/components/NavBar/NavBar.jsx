@@ -73,7 +73,7 @@ export const NavBar = ()=> {
   }, [lastScrollY]);
 
   const handleMouseLeave = () =>{
-    if (currentScrolly === 0 ){
+    if (currentScrollY === 0 ){
       setVerNav (false);
     }
   };
